@@ -2,6 +2,9 @@ services:
   postgres_master:
     container_name: postgres_master
     image: postgres:14.5
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      start_period: 5s
     volumes:
       - ./data:/var/lib/postgresql/data
       - ./data-slave:/var/lib/postgresql/data-slave
@@ -15,8 +18,8 @@ services:
     ports:
       - "127.0.0.1:5432:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     restart: always
 
   postgres_slave:
@@ -30,7 +33,9 @@ services:
     ports:
       - "127.0.0.1:5433:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     depends_on:
-      - postgres_master
+      postgres_master:
+        condition: service_healthy
+    
