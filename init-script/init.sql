@@ -55,7 +55,7 @@ CREATE TABLE flights (
 CREATE TABLE ticket_flights (
     ticket_no CHAR(13),
     flight_id INTEGER,
-    fare_conditions VARCHAR(10),
+    fare_conditions NUMERIC(10, 2),
     amount NUMERIC(10, 2),
     PRIMARY KEY (ticket_no, flight_id),
     FOREIGN KEY (ticket_no) REFERENCES tickets(ticket_no),
