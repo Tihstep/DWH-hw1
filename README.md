@@ -5,6 +5,8 @@ Contributors:
 - Романенко А.
 
 Made: 
+
+
   Создан и настроен docker-compose файл для поднятия контейнеров с PostgreSQL. Был поднят мастер-контейнер и контейнер реплики.
 
   Написан DDL для структуры БД
@@ -21,12 +23,19 @@ Made:
   Запуск системы одной командой: Вся система настроена так, чтобы запускаться одной командой docker-compose up, включая автоматическую инициализацию БД и настройку репликации с задержкой.
 
 Usage: 
-git clone <repo>
-docker-compose up -d
+
+
+`git clone <repo>`
+
+`docker-compose up -d`
+
 %Если docker slave падает с ошибкой возможна проблема с правами доступа, необходимо расширить права доступа к init-scripts через chmod%
-docker exec -it postgres_slave psql -U postgres
-SELECT * from bonus_query; - Бонусное задание - составить запрос подсчета пассажиропотока.
-SELECT * from bonus_view; - Бонусное задание - создать view подсчета пассажиропотока.
+
+`docker exec -it postgres_slave psql -U postgres`
+
+`SELECT * from bonus_query;` - Бонусное задание - составить запрос подсчета пассажиропотока.
+
+`SELECT * from bonus_view;`- Бонусное задание - создать view подсчета пассажиропотока.
 
 Для наглядности добавлены несколько рейсов: 
   1. Из 'SVO' в 'LAX' - 1 пассажир
