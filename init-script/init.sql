@@ -113,12 +113,12 @@ VALUES
 
 INSERT INTO ticket_flights (ticket_no, flight_id, fare_conditions, amount)
 VALUES 
-('TKT001', 1, 'Economy', 200.00),
-('TKT002', 2, 'Business', 300.00), 
-('TKT003', 3, 'Economy', 100.00),
-('TKT004', 4, 'Economy', 100.00),
-('TKT005', 4, 'Economy', 100.00),
-('TKT005', 3, 'Economy', 200.00);
+('TKT001', 1, 200.00, 200.00),
+('TKT002', 2, 200.00, 300.00), 
+('TKT003', 3, 200.00, 100.00),
+('TKT004', 4, 200.00, 100.00),
+('TKT005', 4, 200.00, 100.00),
+('TKT005', 3, 200.00, 200.00);
 
 
 INSERT INTO boarding_passes (ticket_no, flight_id, boarding_no, seat_no)
